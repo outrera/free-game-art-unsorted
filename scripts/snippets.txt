@@ -1,3 +1,6 @@
+Tile frames into 512x96 sheet (see also "sheetify" script):
+  montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
+
 to split image into 64x64 tiles:
   convert input.png -crop 64x64 +repage 3-idle%d.png
 
