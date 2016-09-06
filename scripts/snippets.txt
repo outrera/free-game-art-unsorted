@@ -1,0 +1,27 @@
+to split image into 64x64 tiles:
+  convert input.png -crop 64x64 +repage 3-idle%d.png
+
+to prefix 0 to single-digit indices (needed for sheetify):
+  for i in *.png; do sename "\([^0-9]\)\([0-9]\)\.png" "0\0\1.png" $i; done
+
+to get all png files under the current folder, prefixed with path
+  find . -type f -name "*.png" | while read i; do cp "$i" "$(echo "$i" | sed 's%^\./%%' | sed 's%/%_%g')"; done
+
+to strip physical pixel aspect ratio from a png:
+  pngcrush -rem pHYs -ow image.png
+
+rotate video (use -vfilters "rotate=90" to rotate at right angle):
+  ffmpeg -i input.mp4 -vf "rotate=-30*PI/180" rotated.mp4
+
+move all .svn folders to the top folder
+
+for i in $(find . -type d -name ".svn" -exec echo "{}" \;); do mv "$i" "$(echo "$i" | sed 's%/%-%g' | sed 's%-\.svn%%g' | sed 's%^\.%svn%')"; done
+
+
+to convert 32bit float wavs to 16bit wavs
+  for i in *.wav; do sox "$i" -b 16 "16bit/$i" gain -1 rate 44100 dither -s; done
+
+manual says dithering is required to reduce noise resulting from conversion
+
+raw cd tracks to wav
+  for i in *.raw; do sox -r 44100 -e signed -b 16 -c 2 "$i" "$i.wav"; done

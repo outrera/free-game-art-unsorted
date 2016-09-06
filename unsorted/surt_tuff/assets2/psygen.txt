@@ -1,0 +1,5 @@
+author: surt (Carl Olsson)
+license: CC-BY 3.0, GPL 3.0, GPL 2.0
+source: http://opengameart.org/content/psygen
+
+Psycho Fox inspired tiles. Using 15 colours from the web safe palette (6 level RGB colour cube).
