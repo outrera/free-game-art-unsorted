@@ -1,6 +1,9 @@
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
 
+extract audio track out of 1.mp4 video
+  mplayer -srate 44100 -vo null -vc null -ao pcm:fast:file="1.wav" "1.mp4"
+  
 to split image into 64x64 tiles:
   convert input.png -crop 64x64 +repage 3-idle%d.png
 
