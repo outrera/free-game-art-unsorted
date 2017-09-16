@@ -1,8 +1,8 @@
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
 
-Convert SVG to PNG, rendering at 1200 points, then resizing down to 200x200
-  convert -density 1200 -resize 200x200 source.svg target.png
+Convert SVG to PNG, rendering at 256x256
+  convert -background none -size 256x256 source.svg target.png
 
 Extract audio track out of 1.mp4 video
   mplayer -srate 44100 -vo null -vc null -ao pcm:fast:file="1.wav" "1.mp4"
