@@ -1,33 +1,34 @@
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
 
-extract audio track out of 1.mp4 video
+Convert SVG to PNG, rendering at 1200 points, then resizing down to 200x200
+  convert -density 1200 -resize 200x200 source.svg target.png
+
+Extract audio track out of 1.mp4 video
   mplayer -srate 44100 -vo null -vc null -ao pcm:fast:file="1.wav" "1.mp4"
-  
-to split image into 64x64 tiles:
+
+Split image into 64x64 tiles:
   convert input.png -crop 64x64 +repage 3-idle%d.png
 
-to prefix 0 to single-digit indices (needed for sheetify):
+Prefix 0 to single-digit indices (needed for sheetify):
   for i in *.png; do sename "\([^0-9]\)\([0-9]\)\.png" "0\0\1.png" $i; done
 
-to get all png files under the current folder, prefixed with path
+Get all png files under the current folder, prefixed with path
   find . -type f -name "*.png" | while read i; do cp "$i" "$(echo "$i" | sed 's%^\./%%' | sed 's%/%_%g')"; done
 
-to strip physical pixel aspect ratio from a png:
+Strip physical pixel aspect ratio from a png:
   pngcrush -rem pHYs -ow image.png
 
-rotate video (use -vfilters "rotate=90" to rotate at right angle):
+Rotate video (use -vfilters "rotate=90" to rotate at right angle):
   ffmpeg -i input.mp4 -vf "rotate=-30*PI/180" rotated.mp4
 
-move all .svn folders to the top folder
+Move all .svn folders to the top folder
+  for i in $(find . -type d -name ".svn" -exec echo "{}" \;); do mv "$i" "$(echo "$i" | sed 's%/%-%g' | sed 's%-\.svn%%g' | sed 's%^\.%svn%')"; done
 
-for i in $(find . -type d -name ".svn" -exec echo "{}" \;); do mv "$i" "$(echo "$i" | sed 's%/%-%g' | sed 's%-\.svn%%g' | sed 's%^\.%svn%')"; done
 
-
-to convert 32bit float wavs to 16bit wavs
+Convert 32bit float wavs to 16bit wavs
+Note: manual says dithering is required to reduce noise resulting from conversion
   for i in *.wav; do sox "$i" -b 16 "16bit/$i" gain -1 rate 44100 dither -s; done
 
-manual says dithering is required to reduce noise resulting from conversion
-
-raw cd tracks to wav
+Raw CD tracks to WAV
   for i in *.raw; do sox -r 44100 -e signed -b 16 -c 2 "$i" "$i.wav"; done
