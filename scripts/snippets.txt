@@ -1,5 +1,8 @@
-Duplicate license.txt for each file
+Duplicate license.txt for each file:
   for i in *; do cp ../license.txt "$(basename "$i" | cut -d. -f1).txt"; done
+
+Mass rename files in folder, using sed:
+  for i in *; do echo mv "$i" "$(echo "$i" | sed "s/impact-/hit-/")"; done
 
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
