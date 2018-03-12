@@ -4,6 +4,18 @@ Duplicate license.txt for each file:
 Mass rename files in folder, using sed:
   for i in *; do echo mv "$i" "$(echo "$i" | sed "s/impact-/hit-/")"; done
 
+Crop 100x130 frame.png located at 32,16 in sheet.png:
+  convert sheet.png -crop 100x130+32+16 frame.png
+
+Same, but for all files in the folder
+  for i in *.png; do echo convert "$i" -crop 64x128+24+0 "x$i"; done
+
+Resize images by 25%:
+   for i in *.png; do convert "$i" -resize 25% "x$i"; done
+
+Split gif animation into separate frames:
+  convert -verbose -coalesce src.gif dst.png
+
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
 
