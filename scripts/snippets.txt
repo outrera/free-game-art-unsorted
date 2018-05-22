@@ -16,6 +16,16 @@ Resize images by 25%:
 Split gif animation into separate frames:
   convert -verbose -coalesce src.gif dst.png
 
+Split psd file into respective layers:
+  convert -coalesce src.psd layer.png
+
+
+Create gif animation from separate frames at 10 frames per second:
+  convert -delay $(echo $[100/10]) -loop 1 *.png dst.gif
+
+Same as above but for several images split into folders:
+  for i in */; do convert -delay $(echo $[100/10]) -loop 1 $i*.png "$(basename "$i")".gif; done
+
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
 
@@ -44,9 +54,24 @@ Move all .svn folders to the top folder
   for i in $(find . -type d -name ".svn" -exec echo "{}" \;); do mv "$i" "$(echo "$i" | sed 's%/%-%g' | sed 's%-\.svn%%g' | sed 's%^\.%svn%')"; done
 
 
+Concatenate multiple flac files into single flac:
+  sox *.flac result.flac
+
 Convert 32bit float wavs to 16bit wavs
 Note: manual says dithering is required to reduce noise resulting from conversion
   for i in *.wav; do sox "$i" -b 16 "16bit/$i" gain -1 rate 44100 dither -s; done
 
 Raw CD tracks to WAV
   for i in *.raw; do sox -r 44100 -e signed -b 16 -c 2 "$i" "$i.wav"; done
+
+# extract color table from an image
+convert input.png -unique-colors -scale 100%  cmap.png
+
+# apply colormap to an image
+convert input.pnge -remap cmap.png  -dither None output.png
+
+# palette swapping for truecolor images
+convert input.png
+    -fill #FFFF00 -opaque #999999
+    -fill #FF00FF9C -opaque #9C59919C
+    output.png
