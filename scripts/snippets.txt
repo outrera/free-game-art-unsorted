@@ -27,7 +27,10 @@ Same as above but for several images split into folders:
   for i in */; do convert -delay $(echo $[100/10]) -loop 1 $i*.png "$(basename "$i")".gif; done
 
 Tile frames into 512x96 sheet (see also "sheetify" script):
-  montage.exe -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
+  montage -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
+
+Alternatively (19 is the number of frames per line)
+  montage -background transparent -geometry "64x128>+0+0" -gravity NorthWest -tile 19x Frame*.png result.png
 
 Convert SVG to PNG, rendering at 256x256
   convert -background none -size 256x256 source.svg target.png
