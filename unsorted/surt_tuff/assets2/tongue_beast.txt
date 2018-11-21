@@ -1,0 +1,10 @@
+author: Carl Olsson 'surt', Leeor Dicker 'leeor_net'
+license: Public Domain (CC0)
+source: https://opengameart.org/content/purple-tongue-beast
+
+'pixelized' version of one of surt's CC0 Scraps (https://opengameart.org/forumtopic/cc0-scraps)... didn't know what to call it so this is what you get.
+
+Anyway, this is a scaled, color reduced variant of Surt's original work hand tweaked to give it a 'pixel art' look. It's basically cheating but the results look pretty good and are very servicable for monster artwork in games like Phantasy Star (and probably many others).
+
+Copyright/Attribution Notice: 
+Based on surt's CC0 Scraps

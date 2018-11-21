@@ -21,10 +21,10 @@ Split psd file into respective layers:
 
 
 Create gif animation from separate frames at 10 frames per second:
-  convert -delay $(echo $[100/10]) -loop 1 *.png dst.gif
+  convert -delay $(echo $[100/10]) -dispose Background -loop 1 *.png dst.gif
 
 Same as above but for several images split into folders:
-  for i in */; do convert -delay $(echo $[100/10]) -loop 1 $i*.png "$(basename "$i")".gif; done
+  for i in */; do convert -delay $(echo $[100/10]) -dispose Background -loop 1 $i*.png "$(basename "$i")".gif; done
 
 Tile frames into 512x96 sheet (see also "sheetify" script):
   montage -background transparent -geometry "512x96>+0+0" -gravity NorthWest -tile 1x Frame*.png result.png
