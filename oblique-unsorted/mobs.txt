@@ -1,5 +1,5 @@
 author: Stephen Challener (Redshrike)
-license: CC-BY, OGA-BY
+license: CC-BY 3.0, OGA-BY 3.0
 origin: http://opengameart.org/content/odds-and-ends
 
 
