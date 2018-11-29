@@ -1,7 +1,0 @@
-author: Carl Olsson 'surt'
-license: Public Domain (CC0)
-source: https://opengameart.org/content/flamelings
-
-Rough flame creature concepts.
-
-Uses 8 colours from DawnBringer's 16 colour palette.

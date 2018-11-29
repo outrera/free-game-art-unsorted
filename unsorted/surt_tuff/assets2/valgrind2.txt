@@ -1,3 +1,0 @@
-author: surt (Carl Olsson)
-license: CC0 (Public Domain)
-source: http://opengameart.org/content/some-other-8-bit-vertical-shooter-assets

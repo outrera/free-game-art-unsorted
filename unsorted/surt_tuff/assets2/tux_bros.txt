@@ -1,3 +1,0 @@
-author: surt (Carl Olsson)
-license: GPL 3.0, GPL 2.0
-source: http://opengameart.org/content/tux-bros

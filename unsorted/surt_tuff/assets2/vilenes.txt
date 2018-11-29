@@ -1,3 +1,0 @@
-author: surt (Carl Olsson)
-license: CC0 (Public Domain)
-source: http://opengameart.org/content/another-nes-like-village
