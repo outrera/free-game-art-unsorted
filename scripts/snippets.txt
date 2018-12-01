@@ -23,6 +23,9 @@ Split psd file into respective layers:
 Create gif animation from separate frames at 10 frames per second:
   convert -delay $(echo $[100/10]) -dispose Background -loop 1 *.png dst.gif
 
+Same a above, but on black background without transparency:
+  convert -background black -alpha remove -delay $(echo $[100/10]) -dispose Background -loop 1 *.png dst.gif
+
 Same as above but for several images split into folders:
   for i in */; do convert -delay $(echo $[100/10]) -dispose Background -loop 1 $i*.png "$(basename "$i")".gif; done
 
