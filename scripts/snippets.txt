@@ -1,6 +1,12 @@
 Duplicate license.txt for each file:
   for i in *; do cp ../license.txt "$(basename "$i" | cut -d. -f1).txt"; done
 
+Recursively searches for a 'Needle' in txt files and prints matching file names
+  grep -R 'Needle' -l --include=*.txt .
+  
+or slower:
+  find . -name "*.txt" -type f -exec grep -l 'Needle' {} \;
+
 Mass rename files in folder, using sed:
   for i in *; do echo mv "$i" "$(echo "$i" | sed "s/impact-/hit-/")"; done
 
