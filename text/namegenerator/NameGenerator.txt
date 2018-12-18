@@ -1,0 +1,3 @@
+Author: Rick Hoppmann 'TinyWorlds'
+License: Public Domain (CC0)
+Origin: https://opengameart.org/content/name-generator-with-lists
